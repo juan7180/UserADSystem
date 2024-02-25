@@ -39,6 +39,25 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['file'])) {
         echo "Invalid file type. Only images (jpg, jpeg, png, gif) and videos (mp4, avi, mov) are allowed.";
     }
 }
+
+
+date_default_timezone_set('UTC');
+
+$currentTimeUTC = new DateTime('now', new DateTimeZone('UTC'));
+
+$timezoneOffset = -5 * 3600;
+$currentTimeUTC->modify("$timezoneOffset seconds");
+
+$hour = (int)$currentTimeUTC->format('H');
+
+if ($hour >= 5 && $hour < 12) {
+    $greeting = 'Good morning';
+} elseif ($hour >= 12 && $hour < 18) {
+    $greeting = 'Good afternoon';
+} else {
+    $greeting = 'Good evening';
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -133,6 +152,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['file'])) {
     </header>
     <center>
         <h2>Upload a File</h2>
+        <h4><?php echo $greeting; ?> <?php echo $validUser; ?>!</h4>
         <p>Ad has to be 728 x 90.</p>
         <p>It has to be an image or video (jpg, jpeg, png, gif, mp4, avi, mov).</p>
         <p>No porn, no cheese pizza, no gore.</p>   <!-- these rules can be changed -->
