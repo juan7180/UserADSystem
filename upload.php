@@ -142,7 +142,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['file'])) {
         </form>
         <hr>
         <p>All Ads Preview (*refresh to change*)</p>
-        <img src="https://www.yourdomainhere.com/userads/" alt="Ad" /> <!-- change yourdomainhere.com to your domain -->
+        <img src="https://www.yourdomainhere.com/userads/" alt="Ad" /> <!-- change yourdomainhere.com to your domain and change the folder where its in -->
     </center>
 </body>
 </html>
